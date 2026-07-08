@@ -2,6 +2,8 @@
 
 A GitHub Pages site for faculty sharing practical experience and reusable resources for incorporating generative AI into teaching, research, mentoring, and academic work ethically and responsibly.
 
+Canonical site URL: <https://facultyaiexchange.github.io/>
+
 ## Why Jekyll
 
 This first version uses Jekyll because GitHub Pages can build it directly and contributors only need to add Markdown files. Hugo with Blowfish would also work, but it would require a custom build workflow and a larger theme setup. Jekyll keeps the first shared editing workflow simpler.
@@ -45,6 +47,6 @@ In the repository settings, open **Pages** and choose:
 
 GitHub Pages will run its Jekyll build whenever changes are pushed to `main`.
 
-## Standalone site naming
+## Repository
 
-The current repository still publishes as a project site under `/FacultyAIGallery`. For a standalone root website, either move the site to an account or organization repository named `<account>.github.io`, or configure a custom domain and then update `baseurl` and `repository_url` in `_config.yml`.
+This is an organization GitHub Pages site. The repository is named `facultyaiexchange.github.io`, so GitHub Pages publishes it at the root URL for the `facultyaiexchange` organization.

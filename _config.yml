@@ -1,8 +1,8 @@
 title: Faculty AI Exchange
 description: Shared examples and resources for faculty incorporating generative AI into teaching, research, and academic work ethically and responsibly.
-url: "https://trholmes.github.io"
-baseurl: "/FacultyAIGallery"
-repository_url: "https://github.com/trholmes/FacultyAIGallery"
+url: "https://facultyaiexchange.github.io"
+baseurl: ""
+repository_url: "https://github.com/facultyaiexchange/facultyaiexchange.github.io"
 
 markdown: kramdown
 
