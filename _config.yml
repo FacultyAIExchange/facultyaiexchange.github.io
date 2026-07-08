@@ -1,0 +1,28 @@
+title: Faculty AI Gallery
+description: A gallery of generative AI applications faculty have found useful in teaching, research, and academic work.
+url: "https://trholmes.github.io"
+baseurl: "/FacultyAIGallery"
+repository_url: "https://github.com/trholmes/FacultyAIGallery"
+
+markdown: kramdown
+
+collections:
+  apps:
+    output: true
+    permalink: /gallery/:name/
+
+defaults:
+  - scope:
+      path: ""
+      type: "apps"
+    values:
+      layout: app
+
+exclude:
+  - README.md
+  - docs/
+  - skills/
+  - Gemfile
+  - Gemfile.lock
+  - .bundle/
+  - vendor/

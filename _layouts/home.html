@@ -1,0 +1,30 @@
+---
+layout: default
+---
+
+<main>
+  <section class="hero">
+    <div class="hero-content">
+      {{ content }}
+      <div class="hero-actions">
+        <a class="button primary" href="#gallery">Browse examples</a>
+        <a class="button secondary" href="{{ '/contribute/' | relative_url }}">Add an item</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="gallery" aria-labelledby="gallery-heading">
+    <div class="section-heading">
+      <p class="eyebrow">Gallery</p>
+      <h2 id="gallery-heading">Faculty-tested AI workflows</h2>
+      <p>Each card links to a short write-up with context, adaptation notes, and related skill files.</p>
+    </div>
+
+    <div class="gallery-grid">
+      {% assign apps = site.apps | sort: "title" %}
+      {% for app in apps %}
+        {% include app-card.html app=app %}
+      {% endfor %}
+    </div>
+  </section>
+</main>

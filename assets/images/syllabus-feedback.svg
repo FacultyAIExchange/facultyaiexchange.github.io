@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 540" role="img" aria-labelledby="title desc">
+  <title id="title">Syllabus feedback interface preview</title>
+  <desc id="desc">A stylized document review screen with feedback notes.</desc>
+  <rect width="960" height="540" fill="#f5f7fb"/>
+  <rect x="92" y="66" width="776" height="408" rx="18" fill="#ffffff" stroke="#d8dfeb"/>
+  <rect x="132" y="108" width="360" height="32" rx="6" fill="#24415f"/>
+  <rect x="132" y="168" width="440" height="14" rx="7" fill="#b6c2d2"/>
+  <rect x="132" y="202" width="390" height="14" rx="7" fill="#d3dae5"/>
+  <rect x="132" y="236" width="420" height="14" rx="7" fill="#d3dae5"/>
+  <rect x="132" y="292" width="260" height="18" rx="9" fill="#2f7d6b"/>
+  <rect x="132" y="336" width="458" height="14" rx="7" fill="#d3dae5"/>
+  <rect x="132" y="370" width="392" height="14" rx="7" fill="#d3dae5"/>
+  <rect x="620" y="152" width="176" height="70" rx="12" fill="#e9f4f1" stroke="#b8d8d0"/>
+  <rect x="642" y="176" width="108" height="10" rx="5" fill="#2f7d6b"/>
+  <rect x="642" y="198" width="132" height="8" rx="4" fill="#8bb9ae"/>
+  <rect x="620" y="252" width="196" height="92" rx="12" fill="#fff5e8" stroke="#ecd2aa"/>
+  <rect x="642" y="276" width="120" height="10" rx="5" fill="#a86224"/>
+  <rect x="642" y="300" width="146" height="8" rx="4" fill="#cf9f67"/>
+  <rect x="642" y="322" width="104" height="8" rx="4" fill="#cf9f67"/>
+</svg>

@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 540" role="img" aria-labelledby="title desc">
+  <title id="title">Lab report feedback interface preview</title>
+  <desc id="desc">A stylized lab report review screen with chart and rubric notes.</desc>
+  <rect width="960" height="540" fill="#f6f8f7"/>
+  <rect x="84" y="72" width="792" height="396" rx="18" fill="#ffffff" stroke="#d7dfdb"/>
+  <rect x="124" y="114" width="248" height="30" rx="6" fill="#2c3f4a"/>
+  <rect x="124" y="178" width="320" height="220" rx="12" fill="#eef3f1" stroke="#d8e2de"/>
+  <polyline points="158,346 218,292 278,318 338,238 410,204" fill="none" stroke="#2f7d6b" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="218" cy="292" r="12" fill="#2f7d6b"/>
+  <circle cx="338" cy="238" r="12" fill="#2f7d6b"/>
+  <rect x="498" y="178" width="286" height="42" rx="10" fill="#e9f4f1"/>
+  <rect x="522" y="194" width="146" height="10" rx="5" fill="#2f7d6b"/>
+  <rect x="498" y="246" width="320" height="42" rx="10" fill="#f0f3f7"/>
+  <rect x="522" y="262" width="224" height="10" rx="5" fill="#738295"/>
+  <rect x="498" y="314" width="260" height="42" rx="10" fill="#fff5e8"/>
+  <rect x="522" y="330" width="178" height="10" rx="5" fill="#a86224"/>
+  <rect x="498" y="382" width="298" height="18" rx="9" fill="#cdd7d2"/>
+</svg>

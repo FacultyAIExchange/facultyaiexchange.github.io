@@ -1,0 +1,18 @@
+{% assign app = include.app %}
+<article class="app-card">
+  {% if app.image %}
+    <img class="app-card-image" src="{{ app.image | relative_url }}" alt="">
+  {% endif %}
+  <div class="app-card-body">
+    <p class="app-card-type">{{ app.use_case }}</p>
+    <h3><a href="{{ app.url | relative_url }}">{{ app.title }}</a></h3>
+    <p>{{ app.summary }}</p>
+    {% if app.tags %}
+      <ul class="tag-list" aria-label="Tags">
+        {% for tag in app.tags %}
+          <li>{{ tag }}</li>
+        {% endfor %}
+      </ul>
+    {% endif %}
+  </div>
+</article>

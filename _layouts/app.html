@@ -1,0 +1,65 @@
+---
+layout: default
+---
+
+<main class="page">
+  <article class="app-detail">
+    <a class="back-link" href="{{ '/' | relative_url }}#gallery">Back to gallery</a>
+
+    <header class="app-detail-header">
+      {% if page.image %}
+        <img class="app-detail-image" src="{{ page.image | relative_url }}" alt="">
+      {% endif %}
+      <div>
+        <p class="eyebrow">{{ page.use_case }}</p>
+        <h1>{{ page.title }}</h1>
+        <p class="lede">{{ page.summary }}</p>
+      </div>
+    </header>
+
+    <dl class="metadata-grid">
+      {% if page.faculty %}
+        <div>
+          <dt>Faculty lead</dt>
+          <dd>{{ page.faculty }}</dd>
+        </div>
+      {% endif %}
+      {% if page.department %}
+        <div>
+          <dt>Department</dt>
+          <dd>{{ page.department }}</dd>
+        </div>
+      {% endif %}
+      {% if page.audience %}
+        <div>
+          <dt>Audience</dt>
+          <dd>{{ page.audience }}</dd>
+        </div>
+      {% endif %}
+      {% if page.tools %}
+        <div>
+          <dt>Tools</dt>
+          <dd>{{ page.tools | join: ", " }}</dd>
+        </div>
+      {% endif %}
+    </dl>
+
+    <div class="content">
+      {{ content }}
+    </div>
+
+    {% if page.skill_files %}
+      <section class="related-files" aria-labelledby="skill-files-heading">
+        <h2 id="skill-files-heading">Related skill files</h2>
+        <div class="file-list">
+          {% for skill in page.skill_files %}
+            <a class="file-link" href="{{ site.repository_url }}/blob/main/{{ skill.path }}">
+              <span>{{ skill.name }}</span>
+              <small>{{ skill.description }}</small>
+            </a>
+          {% endfor %}
+        </div>
+      </section>
+    {% endif %}
+  </article>
+</main>
