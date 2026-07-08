@@ -10,6 +10,9 @@ collections:
   apps:
     output: true
     permalink: /gallery/:name/
+  resources:
+    output: true
+    permalink: /resources/:name/
 
 defaults:
   - scope:
@@ -17,6 +20,11 @@ defaults:
       type: "apps"
     values:
       layout: app
+  - scope:
+      path: ""
+      type: "resources"
+    values:
+      layout: resource
 
 exclude:
   - README.md

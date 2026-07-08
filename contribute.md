@@ -16,3 +16,9 @@ Each item should explain:
 - which skill files, prompts, or examples are relevant.
 
 Related skill files can be stored under `skills/your-skill-name/SKILL.md` and linked from the item's `skill_files` list.
+
+# Add a faculty resource
+
+To add a resource that is not a gallery item, create a new Markdown file in `_resources`. Start from `docs/resource-template.md`, keep the front matter fields, and write the resource in ordinary Markdown below the front matter.
+
+Resources are for reusable materials such as syllabus text, assignment guidance, research group norms, checklists, and short faculty-facing guides.

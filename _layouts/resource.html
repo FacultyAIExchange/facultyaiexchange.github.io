@@ -1,0 +1,40 @@
+---
+layout: default
+---
+
+<main class="page">
+  <article class="resource-detail">
+    <a class="back-link" href="{{ '/resources/' | relative_url }}">Back to resources</a>
+
+    <header class="resource-detail-header">
+      <p class="eyebrow">{{ page.resource_type }}</p>
+      <h1>{{ page.title }}</h1>
+      <p class="lede">{{ page.summary }}</p>
+    </header>
+
+    <dl class="metadata-grid">
+      {% if page.audience %}
+        <div>
+          <dt>Audience</dt>
+          <dd>{{ page.audience }}</dd>
+        </div>
+      {% endif %}
+      {% if page.context %}
+        <div>
+          <dt>Context</dt>
+          <dd>{{ page.context }}</dd>
+        </div>
+      {% endif %}
+      {% if page.format %}
+        <div>
+          <dt>Format</dt>
+          <dd>{{ page.format }}</dd>
+        </div>
+      {% endif %}
+    </dl>
+
+    <div class="content resource-content">
+      {{ content }}
+    </div>
+  </article>
+</main>

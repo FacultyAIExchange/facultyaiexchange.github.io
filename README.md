@@ -16,6 +16,14 @@ This first version uses Jekyll because GitHub Pages can build it directly and co
 
 Each Markdown file in `_apps` becomes a gallery detail page.
 
+## Add a faculty resource
+
+1. Copy `docs/resource-template.md` into `_resources/your-resource-name.md`.
+2. Edit the front matter at the top of the file.
+3. Write the resource content in Markdown below the front matter.
+
+Each Markdown file in `_resources` becomes a resource detail page and appears on the resources page.
+
 ## Run locally
 
 If you have Ruby 3 and Bundler available:

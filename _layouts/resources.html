@@ -1,0 +1,28 @@
+---
+layout: default
+---
+
+<main class="page">
+  <article class="page-body resources-intro">
+    {{ content }}
+  </article>
+
+  <section class="resource-list" aria-labelledby="resources-heading">
+    <h2 id="resources-heading">Resources</h2>
+    {% assign resources = site.resources | sort: "title" %}
+    {% for resource in resources %}
+      <article class="resource-card">
+        <p class="app-card-type">{{ resource.resource_type }}</p>
+        <h3><a href="{{ resource.url | relative_url }}">{{ resource.title }}</a></h3>
+        <p>{{ resource.summary }}</p>
+        {% if resource.tags %}
+          <ul class="tag-list" aria-label="Tags">
+            {% for tag in resource.tags %}
+              <li>{{ tag }}</li>
+            {% endfor %}
+          </ul>
+        {% endif %}
+      </article>
+    {% endfor %}
+  </section>
+</main>
