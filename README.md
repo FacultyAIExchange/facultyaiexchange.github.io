@@ -25,8 +25,14 @@ bundle install
 bundle exec jekyll serve
 ```
 
-The GitHub Pages workflow builds the site from `main` whenever changes are pushed.
+GitHub Pages can build the site from `main` whenever changes are pushed.
 
 ## Publish on GitHub Pages
 
-In the repository settings, open **Pages** and set the build source to **GitHub Actions**. The included workflow will build and deploy the site.
+In the repository settings, open **Pages** and choose:
+
+- **Source:** Deploy from a branch
+- **Branch:** `main`
+- **Folder:** `/ (root)`
+
+GitHub Pages will run its Jekyll build whenever changes are pushed to `main`.
