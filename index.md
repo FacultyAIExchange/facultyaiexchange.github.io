@@ -1,10 +1,10 @@
 ---
 layout: home
-title: Faculty AI Gallery
+title: Faculty AI Exchange
 ---
 
-# Faculty AI Gallery
+# Faculty AI Exchange
 
-This site collects practical examples of generative AI applications and faculty-facing resources that have been useful in teaching, research, and academic work. Each gallery entry is meant to be specific enough that another instructor, researcher, or staff partner can understand the problem being solved, the workflow that helped, and the reusable skill files or prompts that supported the work.
+This site collects practical examples, reusable materials, and faculty-facing guidance for incorporating generative AI into teaching, research, mentoring, and academic work in ethical and responsible ways.
 
-The first version is intentionally lightweight. Contributors can add Markdown files to `_apps` for gallery items or `_resources` for faculty resources, include a short summary and metadata in the front matter, and link to any related materials stored in the repository.
+The goal is to make faculty experience visible and adaptable. Contributors can add Markdown files to `_examples` for accounts of practice or `_resources` for reusable materials, include a short summary and metadata in the front matter, and link to related materials stored in the repository.

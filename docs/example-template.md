@@ -1,6 +1,6 @@
 ---
-title: Example AI Workflow Title
-summary: One sentence describing the practical value of this workflow.
+title: Example Faculty AI Practice Title
+summary: One sentence describing the practical value of this example.
 faculty: Faculty or team name
 department: Department, program, or unit
 audience: Who this workflow is intended to help

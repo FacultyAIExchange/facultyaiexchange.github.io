@@ -1,0 +1,19 @@
+---
+layout: default
+---
+
+<main class="page">
+  <article class="page-body resources-intro">
+    {{ content }}
+  </article>
+
+  <section class="resource-list" aria-labelledby="gallery-heading">
+    <h2 id="gallery-heading">Examples</h2>
+    <div class="card-grid">
+      {% assign examples = site.examples | sort: "title" %}
+      {% for example in examples %}
+        {% include example-card.html example=example %}
+      {% endfor %}
+    </div>
+  </section>
+</main>

@@ -7,25 +7,32 @@ layout: default
     <div class="hero-content">
       {{ content }}
       <div class="hero-actions">
-        <a class="button primary" href="#gallery">Browse examples</a>
+        <a class="button primary" href="{{ '/gallery/' | relative_url }}">Browse gallery</a>
         <a class="button secondary" href="{{ '/resources/' | relative_url }}">Browse resources</a>
-        <a class="button secondary" href="{{ '/contribute/' | relative_url }}">Add an item</a>
+        <a class="button secondary" href="{{ '/contribute/' | relative_url }}">Contribute</a>
       </div>
     </div>
   </section>
 
-  <section class="section" id="gallery" aria-labelledby="gallery-heading">
+  <section class="section" aria-labelledby="site-sections-heading">
     <div class="section-heading">
-      <p class="eyebrow">Gallery</p>
-      <h2 id="gallery-heading">Faculty-tested AI workflows</h2>
-      <p>Each card links to a short write-up with context, adaptation notes, and related skill files.</p>
+      <p class="eyebrow">Start here</p>
+      <h2 id="site-sections-heading">Shared practice and reusable materials</h2>
+      <p>The site has two main content areas: a gallery of faculty AI use cases and a resource library for policies, guidance, and adaptable materials.</p>
     </div>
 
-    <div class="gallery-grid">
-      {% assign apps = site.apps | sort: "title" %}
-      {% for app in apps %}
-        {% include app-card.html app=app %}
-      {% endfor %}
+    <div class="card-grid">
+      <article class="resource-card">
+        <p class="card-type">Faculty practice</p>
+        <h3><a href="{{ '/gallery/' | relative_url }}">AI Usage Gallery</a></h3>
+        <p>Browse concrete examples of faculty AI workflows, including context, adaptation notes, and related skill files.</p>
+      </article>
+
+      <article class="resource-card">
+        <p class="card-type">Reusable materials</p>
+        <h3><a href="{{ '/resources/' | relative_url }}">Faculty AI Resources</a></h3>
+        <p>Find adaptable syllabus text, classroom guidance, research group norms, checklists, and other faculty-facing resources.</p>
+      </article>
     </div>
   </section>
 </main>

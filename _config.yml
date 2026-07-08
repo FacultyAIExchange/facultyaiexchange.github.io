@@ -1,5 +1,5 @@
-title: Faculty AI Gallery
-description: A gallery of generative AI applications faculty have found useful in teaching, research, and academic work.
+title: Faculty AI Exchange
+description: Shared examples and resources for faculty incorporating generative AI into teaching, research, and academic work ethically and responsibly.
 url: "https://trholmes.github.io"
 baseurl: "/FacultyAIGallery"
 repository_url: "https://github.com/trholmes/FacultyAIGallery"
@@ -7,9 +7,9 @@ repository_url: "https://github.com/trholmes/FacultyAIGallery"
 markdown: kramdown
 
 collections:
-  apps:
+  examples:
     output: true
-    permalink: /gallery/:name/
+    permalink: /examples/:name/
   resources:
     output: true
     permalink: /resources/:name/
@@ -17,9 +17,9 @@ collections:
 defaults:
   - scope:
       path: ""
-      type: "apps"
+      type: "examples"
     values:
-      layout: app
+      layout: example
   - scope:
       path: ""
       type: "resources"

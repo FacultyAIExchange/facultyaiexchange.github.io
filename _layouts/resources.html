@@ -12,7 +12,7 @@ layout: default
     {% assign resources = site.resources | sort: "title" %}
     {% for resource in resources %}
       <article class="resource-card">
-        <p class="app-card-type">{{ resource.resource_type }}</p>
+        <p class="card-type">{{ resource.resource_type }}</p>
         <h3><a href="{{ resource.url | relative_url }}">{{ resource.title }}</a></h3>
         <p>{{ resource.summary }}</p>
         {% if resource.tags %}

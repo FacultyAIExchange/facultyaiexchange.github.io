@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>{% if page.title %}{{ page.title }} | {% endif %}{{ site.title }}</title>
+    <title>{% if page.title and page.title != site.title %}{{ page.title }} | {% endif %}{{ site.title }}</title>
     <meta name="description" content="{{ page.description | default: site.description }}">
     <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}">
   </head>
@@ -11,7 +11,7 @@
     <header class="site-header">
       <a class="site-title" href="{{ '/' | relative_url }}">{{ site.title }}</a>
       <nav class="site-nav" aria-label="Primary navigation">
-        <a href="{{ '/' | relative_url }}">Gallery</a>
+        <a href="{{ '/gallery/' | relative_url }}">AI Usage Gallery</a>
         <a href="{{ '/resources/' | relative_url }}">Resources</a>
         <a href="{{ '/contribute/' | relative_url }}">Contribute</a>
         <a href="{{ site.repository_url }}">GitHub</a>
@@ -21,8 +21,8 @@
     {{ content }}
 
     <footer class="site-footer">
-      <p>Built as a shared Markdown gallery for faculty AI workflows.</p>
-      <p><a href="{{ site.repository_url }}">Suggest an entry on GitHub</a></p>
+      <p>Built as a shared Markdown resource for responsible faculty AI practice.</p>
+      <p><a href="{{ site.repository_url }}">Suggest a contribution on GitHub</a></p>
     </footer>
   </body>
 </html>

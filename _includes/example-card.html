@@ -1,0 +1,18 @@
+{% assign example = include.example %}
+<article class="example-card">
+  {% if example.image %}
+    <img class="example-card-image" src="{{ example.image | relative_url }}" alt="">
+  {% endif %}
+  <div class="example-card-body">
+    <p class="card-type">{{ example.use_case }}</p>
+    <h3><a href="{{ example.url | relative_url }}">{{ example.title }}</a></h3>
+    <p>{{ example.summary }}</p>
+    {% if example.tags %}
+      <ul class="tag-list" aria-label="Tags">
+        {% for tag in example.tags %}
+          <li>{{ tag }}</li>
+        {% endfor %}
+      </ul>
+    {% endif %}
+  </div>
+</article>

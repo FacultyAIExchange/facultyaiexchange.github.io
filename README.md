@@ -1,20 +1,20 @@
-# Faculty AI Gallery
+# Faculty AI Exchange
 
-A GitHub Pages site for sharing generative AI applications that faculty have found useful.
+A GitHub Pages site for faculty sharing practical experience and reusable resources for incorporating generative AI into teaching, research, mentoring, and academic work ethically and responsibly.
 
 ## Why Jekyll
 
 This first version uses Jekyll because GitHub Pages can build it directly and contributors only need to add Markdown files. Hugo with Blowfish would also work, but it would require a custom build workflow and a larger theme setup. Jekyll keeps the first shared editing workflow simpler.
 
-## Add a gallery item
+## Add a gallery example
 
-1. Copy `docs/gallery-item-template.md` into `_apps/your-item-name.md`.
+1. Copy `docs/example-template.md` into `_examples/your-example-name.md`.
 2. Edit the front matter at the top of the file.
-3. Write the item details in Markdown below the front matter.
+3. Write the example details in Markdown below the front matter.
 4. Add related skill files under `skills/your-skill-name/SKILL.md`.
-5. Link those files from the item's `skill_files` list.
+5. Link those files from the example's `skill_files` list.
 
-Each Markdown file in `_apps` becomes a gallery detail page.
+Each Markdown file in `_examples` appears on the AI Usage Gallery page and becomes an example detail page.
 
 ## Add a faculty resource
 
@@ -44,3 +44,7 @@ In the repository settings, open **Pages** and choose:
 - **Folder:** `/ (root)`
 
 GitHub Pages will run its Jekyll build whenever changes are pushed to `main`.
+
+## Standalone site naming
+
+The current repository still publishes as a project site under `/FacultyAIGallery`. For a standalone root website, either move the site to an account or organization repository named `<account>.github.io`, or configure a custom domain and then update `baseurl` and `repository_url` in `_config.yml`.

@@ -3,12 +3,12 @@ layout: default
 ---
 
 <main class="page">
-  <article class="app-detail">
-    <a class="back-link" href="{{ '/' | relative_url }}#gallery">Back to gallery</a>
+  <article class="example-detail">
+    <a class="back-link" href="{{ '/gallery/' | relative_url }}">Back to AI Usage Gallery</a>
 
-    <header class="app-detail-header">
+    <header class="example-detail-header">
       {% if page.image %}
-        <img class="app-detail-image" src="{{ page.image | relative_url }}" alt="">
+        <img class="example-detail-image" src="{{ page.image | relative_url }}" alt="">
       {% endif %}
       <div>
         <p class="eyebrow">{{ page.use_case }}</p>

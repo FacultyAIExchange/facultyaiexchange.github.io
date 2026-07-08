@@ -142,7 +142,7 @@ img {
 }
 
 .eyebrow,
-.app-card-type {
+.card-type {
   margin: 0 0 0.4rem;
   color: var(--accent-dark);
   font-size: 0.78rem;
@@ -163,13 +163,13 @@ img {
   color: var(--muted);
 }
 
-.gallery-grid {
+.card-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(min(100%, 290px), 1fr));
   gap: 1.1rem;
 }
 
-.app-card {
+.example-card {
   overflow: hidden;
   background: var(--surface);
   border: 1px solid var(--line);
@@ -177,33 +177,33 @@ img {
   box-shadow: var(--shadow);
 }
 
-.app-card-image {
+.example-card-image {
   width: 100%;
   aspect-ratio: 16 / 9;
   object-fit: cover;
   border-bottom: 1px solid var(--line);
 }
 
-.app-card-body {
+.example-card-body {
   padding: 1.1rem;
 }
 
-.app-card h3 {
+.example-card h3 {
   margin: 0 0 0.55rem;
   font-size: 1.25rem;
   line-height: 1.2;
 }
 
-.app-card h3 a {
+.example-card h3 a {
   color: var(--ink);
   text-decoration: none;
 }
 
-.app-card h3 a:hover {
+.example-card h3 a:hover {
   color: var(--accent-dark);
 }
 
-.app-card p {
+.example-card p {
   margin: 0;
   color: var(--muted);
 }
@@ -228,7 +228,7 @@ img {
 }
 
 .page-body,
-.app-detail,
+.example-detail,
 .resource-detail {
   padding: clamp(1.25rem, 4vw, 2rem);
   background: var(--surface);
@@ -242,7 +242,7 @@ img {
 }
 
 .page-body h1,
-.app-detail h1,
+.example-detail h1,
 .resource-detail h1 {
   margin-top: 0;
   line-height: 1.05;
@@ -262,7 +262,7 @@ img {
   text-decoration: none;
 }
 
-.app-detail-header {
+.example-detail-header {
   display: grid;
   grid-template-columns: minmax(220px, 360px) minmax(0, 1fr);
   gap: clamp(1rem, 4vw, 2rem);
@@ -270,7 +270,7 @@ img {
   margin-bottom: 1.5rem;
 }
 
-.app-detail-image {
+.example-detail-image {
   width: 100%;
   aspect-ratio: 16 / 9;
   object-fit: cover;
@@ -278,7 +278,7 @@ img {
   border-radius: 8px;
 }
 
-.app-detail h1 {
+.example-detail h1 {
   margin-bottom: 0.65rem;
   font-size: clamp(2rem, 4vw, 3.4rem);
 }
@@ -446,7 +446,7 @@ img {
     max-width: 100%;
   }
 
-  .app-detail-header {
+  .example-detail-header {
     grid-template-columns: 1fr;
   }
 }
