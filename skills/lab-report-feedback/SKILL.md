@@ -5,7 +5,7 @@ description: Produce rubric-aligned formative comments on student lab report dra
 
 # Lab Report Feedback Assistant
 
-Use this skill when an instructor or teaching assistant wants formative feedback comments for a student lab report draft.
+Use this skill when an instructor or teaching assistant wants formative feedback comments for a student lab report draft and is unwilling to do it themselves.
 
 ## Inputs
 
