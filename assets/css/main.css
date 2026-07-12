@@ -1,12 +1,12 @@
 :root {
-  /* Palette: Coolors — cbe896, fffffc, beb7a4, ff7f11, ff1b1c */
+  /* Palette: Coolors — cbe896, fffffc, beb7a4, ff7f11, ff1b1c (accent tuned to UT orange ff8200) */
   --paper: #fffffc;      /* Porcelain */
   --card: #fffdf9;
   --ink: #232a34;
   --muted: #5c6470;
   --faint: #8b929c;
   --line: #ece7dd;
-  --accent: #ff7f11;     /* Vivid Tangerine */
+  --accent: #ff8200;     /* Vivid Tangerine → UT orange */
   --accent-ink: #ff1b1c; /* Red */
   --midnight: #48463e;   /* Khaki Beige, darkened 62% */
   --amber: #cbe896;      /* Lime Cream */
@@ -300,6 +300,7 @@ img {
 }
 
 .pathway-motif {
+  position: relative;
   width: 100%;
   height: 118px;
   overflow: hidden;
@@ -307,7 +308,19 @@ img {
   border-radius: 14px;
 }
 
+.pathway-motif::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+  background-size: 22px 22px;
+  pointer-events: none;
+}
+
 .pathway-motif svg {
+  position: relative;
   display: block;
   width: 100%;
   height: 100%;
@@ -351,12 +364,29 @@ img {
 
 /* ---------- Contribute band (home) ---------- */
 .band {
+  position: relative;
+  overflow: hidden;
   width: min(1180px, calc(100% - 2.5rem));
   margin: 0 auto clamp(2.5rem, 5vw, 4rem);
   padding: clamp(2.5rem, 4.5vw, 3.6rem);
   color: #fff;
   background: var(--midnight);
   border-radius: 28px;
+}
+
+.band::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.045) 1px, transparent 1px);
+  background-size: 26px 26px;
+  pointer-events: none;
+}
+
+.band > * {
+  position: relative;
 }
 
 .band .eyebrow {
@@ -489,8 +519,8 @@ img {
   font-size: 0.75rem;
   font-weight: 400;
   color: var(--accent-ink);
-  background: rgba(255, 127, 17, 0.09);
-  border: 1px solid rgba(255, 127, 17, 0.26);
+  background: rgba(255, 130, 0, 0.09);
+  border: 1px solid rgba(255, 130, 0, 0.26);
   border-radius: 999px;
 }
 
@@ -716,6 +746,31 @@ img {
 
 .site-footer a:hover {
   color: var(--ink);
+}
+
+.footer-support {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0.75rem;
+  width: 100%;
+  color: var(--faint);
+  font-size: 0.82rem;
+}
+
+.footer-support a {
+  color: var(--muted);
+  font-weight: 600;
+}
+
+.footer-support a:hover {
+  color: var(--accent-ink);
+}
+
+.footer-support img {
+  height: 32px;
+  width: auto;
+  display: block;
 }
 
 /* ---------- Responsive ---------- */
