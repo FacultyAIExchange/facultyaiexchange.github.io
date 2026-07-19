@@ -1,15 +1,15 @@
 ---
 title: Local Grant Budget Dashboard for PIs
-summary: An AI-assisted, local-only dashboard that turns institutional finance exports into grant projections, spending alerts, and hiring scenarios without sending sensitive data off the faculty member's computer.
+summary: A local-only dashboard that turns institutional finance exports into grant projections, spending alerts, and hiring scenarios without sending sensitive data off the faculty member's computer.
 faculty: Dr. Tova Holmes
-department: Physics and Astronomy, University of Tennessee, Knoxville
-audience: Principal investigators and research-group leaders managing sponsored awards
+department: Physics & Astronomy, University of Tennessee, Knoxville
+audience: Principal investigators
 use_case: Research administration
 tools:
-  - AI coding assistant
   - Python
   - JavaScript
   - Institutional CSV exports
+  - skill for using an LLM to adapt to your institution
 tags:
   - Research
   - Grant management
@@ -25,24 +25,21 @@ skill_files:
 
 ## What faculty used it for
 
-The faculty lead used an AI-assisted coding workflow to turn exports from the university's financial reporting systems into a practical portfolio dashboard for principal investigators. The dashboard shows budget, spending, commitments, remaining funds, monthly burn rate, and runway for each award. It also flags potential problems such as overspent categories, charges against zero-budget lines, awards ending with substantial funds unspent, and spending that is on pace to overrun.
+This tool makes it possible to visualize and project all of your grants in one place. You can see your past spending categories and make changes to see their impact on your spend down. It also creates alerts when spending goes too far astray from your budgets. 
 
-The People table supports forward planning that the institutional reports do not provide. It can model a new hire, a student's expected graduation, a change in salary, or a person's support split across grants. Those edits flow into projections that account for salary, fringe, tuition and fees, and each award's facilities and administrative cost rate.
+Its People table supports forward planning that the institutional reports do not provide. It can model a new hire, a student's expected graduation, a change in salary, or a person's support split across grants. Those edits flow into projections that account for salary, fringe, tuition and fees, and each award's facilities and administrative cost rate.
+
+The tool runs locally to keep all data fully private. It makes no outbound network requests, and keeps data files out of version control. AI was used to help build the tool, but the financial analysis itself uses transparent, deterministic formulas and does not send institutional data to an AI service.
 
 ## Why it was useful
 
-The dashboard brings several large, difficult-to-compare reports into one decision-oriented view. Instead of reconstructing the same calculations in spreadsheets, a PI can reload fresh exports and quickly see which awards need attention and whether a staffing plan is sustainable.
+Creating this tool made me actually feel like I understood my budget for the first time. It was not only easy to see where I was at, but easy to understand how taking on a new student would impact my finances. It is making a real change in how informed my financial choices are as a PI.
 
-The privacy model is especially important for salary and sponsored-project data. The application runs only on the faculty member's computer, makes no outbound network requests, and keeps data files out of version control. AI is used to help build or adapt the tool; the financial analysis itself uses transparent, deterministic formulas and does not send institutional data to an AI service.
+Its practical utility is limited only by the ease (or lack thereof) of exporting information from your University's system. You can drop in fresh exports and immediately see the changes. 
 
-Because the implementation uses only the Python standard library and browser-native JavaScript, colleagues can audit and run it without installing additional packages. The accompanying skill file turns the project into a reusable method: it asks an AI coding assistant to inventory local exports, validate their quirks and totals, learn institution-specific rules, and then adapt the reference implementation.
+The accompanying skill file turns the project into a reusable method: it asks an AI coding assistant to inventory local exports, validate their quirks and totals, learn institution-specific rules, and then adapt the reference implementation. You can do this step with dummy data based on your institution's formats to prevent any data being sent to an LLM.
 
 ## Materials to adapt
 
-- The [UTKGrantDashboard source repository](https://github.com/trholmes/UTKGrantDashboard), which includes fictional demo data and a reference implementation.
-- A budget-versus-actuals export for each award, including award dates and expenditure categories.
-- A transaction-detail export with dates and, where available, payroll, fringe, commitment, and indirect-cost information.
-- Local rules for rebudgeting, fringe, summer salary, tuition and fees, and facilities and administrative costs.
-- The related skill file linked below, plus representative sample exports that an AI coding assistant can inspect safely under the institution's data-handling policies.
-
-Real grant and payroll exports may contain sensitive information. Faculty adapting this workflow should use an approved AI environment or sanitized sample files while developing parsers, and preserve the reference implementation's local-only design for routine use.
+- The [UTKGrantDashboard repository](https://github.com/trholmes/UTKGrantDashboard), which includes fictional demo data and a reference implementation. Look at the README for details on what it takes in.
+- This package includes a skill file (also linked below) that can help guide an AI agent to re-work the package for your institution.
