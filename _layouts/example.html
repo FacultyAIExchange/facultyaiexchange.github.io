@@ -48,12 +48,23 @@ layout: default
       {{ content }}
     </div>
 
-    {% if page.skill_files %}
-      <section class="related-files" aria-labelledby="skill-files-heading">
-        <h2 id="skill-files-heading">Related skill files</h2>
+    {% if page.repository_url or page.skill_files %}
+      <section class="related-files" aria-labelledby="project-links-heading">
+        <h2 id="project-links-heading">Project links</h2>
         <div class="file-list">
+          {% if page.repository_url %}
+            <a class="file-link" href="{{ page.repository_url }}" target="_blank" rel="noopener noreferrer">
+              <span>Source repository</span>
+              <small>View the project code, documentation, and supporting materials.</small>
+            </a>
+          {% endif %}
           {% for skill in page.skill_files %}
-            <a class="file-link" href="{{ site.repository_url }}/blob/main/{{ skill.path }}">
+            {% if skill.url %}
+              {% assign skill_url = skill.url %}
+            {% else %}
+              {% assign skill_url = site.repository_url | append: "/blob/main/" | append: skill.path %}
+            {% endif %}
+            <a class="file-link" href="{{ skill_url }}" target="_blank" rel="noopener noreferrer">
               <span>{{ skill.name }}</span>
               <small>{{ skill.description }}</small>
             </a>

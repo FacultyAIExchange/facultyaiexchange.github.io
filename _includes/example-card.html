@@ -6,7 +6,7 @@
   <div class="example-card-body">
     <p class="card-type">{{ example.use_case }}</p>
     <h3><a href="{{ example.url | relative_url }}">{{ example.title }}</a></h3>
-    <p>{{ example.summary }}</p>
+    <p class="example-card-summary">{{ example.summary }}</p>
     {% if example.tags %}
       <ul class="tag-list" aria-label="Tags">
         {% for tag in example.tags %}
@@ -14,5 +14,23 @@
         {% endfor %}
       </ul>
     {% endif %}
+    <nav class="example-card-links" aria-label="Links for {{ example.title }}">
+      <a class="example-card-link" href="{{ example.url | relative_url }}">Details</a>
+      {% if example.repository_url %}
+        <a class="example-card-link" href="{{ example.repository_url }}" target="_blank" rel="noopener noreferrer">Repository</a>
+      {% endif %}
+      {% if example.skill_files %}
+        {% for skill in example.skill_files %}
+          {% if skill.url %}
+            {% assign skill_url = skill.url %}
+          {% else %}
+            {% assign skill_url = site.repository_url | append: "/blob/main/" | append: skill.path %}
+          {% endif %}
+          <a class="example-card-link" href="{{ skill_url }}" target="_blank" rel="noopener noreferrer" title="{{ skill.name }}">
+            Skill{% if example.skill_files.size > 1 %} {{ forloop.index }}{% endif %}
+          </a>
+        {% endfor %}
+      {% endif %}
+    </nav>
   </div>
 </article>

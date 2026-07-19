@@ -10,9 +10,13 @@ tools:
 tags:
   - Tag
 image: /assets/images/example.svg
+# Optional: omit when the example has no separate source repository.
+repository_url: https://github.com/organization/project
+# Optional: omit when the example has no related skill.
 skill_files:
   - name: Skill file display name
     path: skills/example-skill/SKILL.md
+    # Use url instead of path when the skill is hosted elsewhere.
     description: Short description of what the skill file does.
 ---
 

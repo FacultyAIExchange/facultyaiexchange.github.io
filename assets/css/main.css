@@ -461,6 +461,8 @@ img {
 }
 
 .example-card {
+  display: flex;
+  flex-direction: column;
   overflow: hidden;
   background: var(--card);
   border: 1px solid var(--line);
@@ -481,6 +483,9 @@ img {
 }
 
 .example-card-body {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
   padding: 1.3rem;
 }
 
@@ -499,7 +504,7 @@ img {
   color: var(--accent-ink);
 }
 
-.example-card p {
+.example-card-summary {
   margin: 0;
   color: var(--muted);
 }
@@ -522,6 +527,34 @@ img {
   background: rgba(255, 130, 0, 0.09);
   border: 1px solid rgba(255, 130, 0, 0.26);
   border-radius: 999px;
+}
+
+.example-card-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  margin-top: auto;
+  padding-top: 1.15rem;
+}
+
+.example-card-link {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2rem;
+  padding: 0.35rem 0.7rem;
+  color: var(--ink);
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  line-height: 1;
+  text-decoration: none;
+}
+
+.example-card-link:hover {
+  color: var(--accent-ink);
+  border-color: var(--accent);
 }
 
 .page-body,
