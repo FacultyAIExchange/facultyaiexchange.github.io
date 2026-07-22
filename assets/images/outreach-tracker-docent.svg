@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 540" role="img" aria-labelledby="title desc">
+  <title id="title">DOCENT outreach tracker preview</title>
+  <desc id="desc">A stylized outreach tracking interface with a map, visit log, and dashboard chart.</desc>
+  <rect width="960" height="540" fill="#f6f8f7"/>
+  <rect x="84" y="72" width="792" height="396" rx="18" fill="#ffffff" stroke="#d7dfdb"/>
+  <!-- Map area -->
+  <rect x="124" y="114" width="360" height="280" rx="12" fill="#eef3f1" stroke="#d8e2de"/>
+  <!-- Map pins - reached (green) -->
+  <circle cx="220" cy="220" r="10" fill="#2f7d6b"/>
+  <circle cx="310" cy="180" r="10" fill="#2f7d6b"/>
+  <circle cx="380" cy="260" r="10" fill="#2f7d6b"/>
+  <circle cx="260" cy="310" r="10" fill="#2f7d6b"/>
+  <!-- Map pins - gaps (orange) -->
+  <circle cx="180" cy="290" r="10" fill="#d4772c"/>
+  <circle cx="420" cy="200" r="10" fill="#d4772c"/>
+  <circle cx="340" cy="340" r="10" fill="#d4772c"/>
+  <!-- Visit log entries -->
+  <rect x="524" y="114" width="310" height="38" rx="8" fill="#e9f4f1"/>
+  <rect x="544" y="128" width="140" height="10" rx="5" fill="#2f7d6b"/>
+  <rect x="524" y="166" width="310" height="38" rx="8" fill="#f0f3f7"/>
+  <rect x="544" y="180" width="180" height="10" rx="5" fill="#738295"/>
+  <rect x="524" y="218" width="310" height="38" rx="8" fill="#e9f4f1"/>
+  <rect x="544" y="232" width="120" height="10" rx="5" fill="#2f7d6b"/>
+  <rect x="524" y="270" width="310" height="38" rx="8" fill="#f0f3f7"/>
+  <rect x="544" y="284" width="160" height="10" rx="5" fill="#738295"/>
+  <!-- Bar chart at bottom right -->
+  <rect x="524" y="326" width="310" height="80" rx="8" fill="#fafbfa" stroke="#d8e2de"/>
+  <rect x="548" y="370" width="30" height="28" fill="#2f7d6b" rx="4"/>
+  <rect x="590" y="356" width="30" height="42" fill="#2f7d6b" rx="4"/>
+  <rect x="632" y="342" width="30" height="56" fill="#2f7d6b" rx="4"/>
+  <rect x="674" y="362" width="30" height="36" fill="#2f7d6b" rx="4"/>
+  <rect x="716" y="348" width="30" height="50" fill="#2f7d6b" rx="4"/>
+  <rect x="758" y="336" width="30" height="62" fill="#2f7d6b" rx="4"/>
+  <!-- Title bar -->
+  <rect x="124" y="72" width="200" height="30" rx="6" fill="#2c3f4a"/>
+</svg>
