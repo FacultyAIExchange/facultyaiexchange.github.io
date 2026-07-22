@@ -10,6 +10,7 @@ tools:
   - FastAPI
   - PostgreSQL
   - React
+  - Claude
 tags:
   - Research
   - Outreach
