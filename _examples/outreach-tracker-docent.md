@@ -3,6 +3,7 @@ title: DOCENT — Outreach & Community Engagement Tracker
 summary: A self-hosted web app that helps a scientific community log outreach visits, visualize coverage on a map, and share resources.
 faculty: Prof. Lawrence Lee
 department: Physics & Astronomy, University of Tennessee, Knoxville
+department_id: physics-and-astronomy
 audience: Departments and institutions tracking community engagement
 use_case: Outreach tracking, grant reporting
 tools:

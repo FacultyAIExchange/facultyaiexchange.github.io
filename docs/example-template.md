@@ -3,6 +3,8 @@ title: Example Faculty AI Practice Title
 summary: One sentence describing the practical value of this example.
 faculty: Faculty or team name
 department: Department, program, or unit
+# A stable lowercase ID lets CI count the same department only once.
+department_id: department-program-or-unit
 audience: Who this workflow is intended to help
 use_case: Short category name
 tools:

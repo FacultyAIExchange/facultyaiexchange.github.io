@@ -37,15 +37,11 @@ bundle exec jekyll serve
 
 GitHub Pages can build the site from `main` whenever changes are pushed.
 
+The Pages workflow runs `scripts/generate_tallies.rb` before each build. It counts gallery examples, resources, and unique `department_id` values into an ephemeral `_data/tallies.yml`, which supplies the three homepage tallies without committing generated data.
+
 ## Publish on GitHub Pages
 
-In the repository settings, open **Pages** and choose:
-
-- **Source:** Deploy from a branch
-- **Branch:** `main`
-- **Folder:** `/ (root)`
-
-GitHub Pages will run its Jekyll build whenever changes are pushed to `main`.
+In the repository settings, open **Pages** and choose **Source: GitHub Actions**. The workflow builds and publishes the site whenever changes are pushed to `main`, and it validates pull requests without deploying them.
 
 ## Repository
 

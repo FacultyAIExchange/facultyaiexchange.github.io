@@ -7,31 +7,36 @@
     <meta name="description" content="{{ page.description | default: site.description }}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:wght@400;500;600;700&family=Hanken+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}">
   </head>
   <body>
     <header class="site-header">
+      {% if page.layout == 'home' or page.url == '/' %}
+      <span class="site-tag">A shared workshop for AI in the classroom &amp; lab</span>
+      <span class="site-mid">For faculty, by faculty</span>
+      {% else %}
       <a class="site-title" href="{{ '/' | relative_url }}">{{ site.title }}</a>
+      {% endif %}
       <nav class="site-nav" aria-label="Primary navigation">
-        <a href="{{ '/gallery/' | relative_url }}">AI Usage Gallery</a>
+        <a href="{{ '/gallery/' | relative_url }}">Gallery</a>
         <a href="{{ '/resources/' | relative_url }}">Resources</a>
         <a href="{{ '/contribute/' | relative_url }}">Contribute</a>
-        <a class="gh" href="{{ site.repository_url }}">GitHub</a>
+        <a href="{{ site.repository_url }}">GitHub</a>
       </nav>
     </header>
 
     {{ content }}
 
     <footer class="site-footer">
-      <p>Faculty AI Exchange — an open collection of how faculty are using AI in teaching and research.</p>
-      <p><a href="{{ site.repository_url }}">Suggest a contribution on GitHub</a></p>
       <div class="footer-support">
         <span>Supported by</span>
         <a href="https://rescorp.org/" aria-label="Research Corporation for Science Advancement">
           <img src="{{ '/assets/images/rcsa-logo.svg' | relative_url }}" alt="Research Corporation for Science Advancement">
         </a>
       </div>
+      <span class="footer-dot" aria-hidden="true"></span>
+      <a href="{{ site.repository_url }}">Edit this site on GitHub</a>
     </footer>
   </body>
 </html>

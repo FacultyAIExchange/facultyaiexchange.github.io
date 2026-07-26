@@ -3,6 +3,7 @@ title: Local Grant Budget Dashboard for PIs
 summary: A local-only dashboard that turns institutional finance exports into grant projections, spending alerts, and hiring scenarios without sending sensitive data off the faculty member's computer.
 faculty: Dr. Tova Holmes
 department: Physics & Astronomy, University of Tennessee, Knoxville
+department_id: physics-and-astronomy
 audience: Principal investigators
 use_case: Research administration
 tools:
