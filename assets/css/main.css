@@ -682,7 +682,11 @@ img { display: block; max-width: 100%; }
   }
 
   .rail-rule { display: none; }
-  .rail-dot { width: 52px; height: 32px; }
+  .rail-dot {
+    flex: 0 0 32px;
+    width: 32px;
+    height: 32px;
+  }
   .count-no { font-size: 2.8rem; }
 
   .poster-lead { grid-template-columns: 1fr; }
