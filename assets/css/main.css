@@ -174,7 +174,7 @@ img { display: block; max-width: 100%; }
 
 .wm-tittle {
   position: absolute;
-  left: 50%;
+  left: calc(50% + 0.055em);
   top: 0.05em;
   transform: translateX(-50%);
   z-index: 1;
