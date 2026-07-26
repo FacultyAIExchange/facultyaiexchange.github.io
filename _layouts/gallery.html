@@ -2,13 +2,17 @@
 layout: default
 ---
 
-<main class="page">
-  <article class="page-body resources-intro">
+<main class="page gallery-page">
+  <header class="page-header">
+    <p class="eyebrow">Faculty using AI</p>
     {{ content }}
-  </article>
+  </header>
 
   <section class="resource-list" aria-labelledby="gallery-heading">
-    <h2 id="gallery-heading">Examples</h2>
+    <div class="section-heading heading-row">
+      <h2 id="gallery-heading">Examples</h2>
+      <span class="heading-rule" aria-hidden="true"></span>
+    </div>
     <div class="card-grid">
       {% assign examples = site.examples | sort: "title" %}
       {% for example in examples %}

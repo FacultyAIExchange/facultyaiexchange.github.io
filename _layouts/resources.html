@@ -2,13 +2,17 @@
 layout: default
 ---
 
-<main class="page">
-  <article class="page-body resources-intro">
+<main class="page resources-page">
+  <header class="page-header">
+    <p class="eyebrow">Supporting materials</p>
     {{ content }}
-  </article>
+  </header>
 
   <section class="resource-list" aria-labelledby="resources-heading">
-    <h2 id="resources-heading">Resources</h2>
+    <div class="section-heading heading-row">
+      <h2 id="resources-heading">Resources</h2>
+      <span class="heading-rule" aria-hidden="true"></span>
+    </div>
     {% assign resources = site.resources | sort: "title" %}
     {% for resource in resources %}
       <article class="resource-card">

@@ -390,6 +390,27 @@ img { display: block; max-width: 100%; }
 
 .band-action { margin-top: 2rem; }
 
+/* ---------- Page headers (gallery / resources) ---------- */
+.page-header {
+  border-top: 3px solid var(--accent);
+  padding-top: 1.2rem;
+  margin-bottom: 2.4rem;
+}
+
+.resources-page .page-header { border-top-color: var(--green); }
+
+.page-header .eyebrow { margin-bottom: 0.8rem; }
+
+.page-header h1 {
+  margin: 0 0 0.7rem;
+  font-size: clamp(2.4rem, 5vw, 4rem);
+  line-height: 0.92;
+  letter-spacing: -0.05em;
+  text-transform: lowercase;
+}
+
+.page-header p { margin: 0; max-width: 62ch; font-size: 0.85rem; line-height: 1.75; color: var(--ink); }
+
 /* ---------- Listing / detail cards ---------- */
 .card-grid {
   display: grid;
@@ -401,6 +422,7 @@ img { display: block; max-width: 100%; }
   overflow: hidden;
   background: var(--paper);
   border: 1px solid var(--ink);
+  border-top: 3px solid var(--accent);
   border-radius: 0;
   box-shadow: none;
   transition: background 0.15s ease;
@@ -450,6 +472,23 @@ img { display: block; max-width: 100%; }
   border: 1px solid var(--soft-line);
   border-radius: 0;
 }
+
+.example-card-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.1rem;
+  margin-top: 1rem;
+}
+
+.example-card-link {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--ink);
+  border-bottom: 2px solid var(--accent);
+  padding-bottom: 0.15rem;
+}
+
+.example-card-link:hover { color: var(--accent2); border-bottom-color: var(--accent2); }
 
 .page-body,
 .example-detail,
@@ -550,6 +589,7 @@ img { display: block; max-width: 100%; }
   padding: 1.4rem 1.5rem;
   background: var(--paper);
   border: 1px solid var(--ink);
+  border-top: 3px solid var(--green);
   border-radius: 0;
   box-shadow: none;
   transition: background 0.15s ease;
