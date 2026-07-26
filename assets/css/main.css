@@ -178,11 +178,11 @@ img { display: block; max-width: 100%; }
   top: 0.05em;
   transform: translateX(-50%);
   z-index: 1;
-  width: 0.2em;
-  height: 0.2em;
-  border-radius: 50%;
+  width: 0.43em;
+  height: 0.43em;
+  border-radius: 77%;
   background: var(--accent2);
-  border: 0.027em solid var(--paper);
+  border: 0.08em solid var(--paper);
 }
 
 .poster-lead {
