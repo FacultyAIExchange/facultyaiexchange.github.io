@@ -4,7 +4,7 @@
   --paper: #f4efe2;
   --ink: #1c1a12;
   --accent: #ff8200;     /* tangerine */
-  --accent2: #d94a1f;    /* red-orange */
+  --accent2: #ff1b1c;    /* red */
   --green: #cbe896;      /* lime — resources */
   --muted: color-mix(in srgb, var(--ink) 58%, var(--paper));
   --soft-line: color-mix(in srgb, var(--ink) 20%, var(--paper));
