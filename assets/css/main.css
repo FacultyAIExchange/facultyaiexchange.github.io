@@ -399,8 +399,10 @@ img { display: block; max-width: 100%; }
 }
 
 .resources-page .page-header { border-top-color: var(--green); }
+.contribute-page .page-header { border-top-color: var(--accent2); }
 
 .page-header .eyebrow { margin-bottom: 0.8rem; }
+.contribute-page .page-header .eyebrow { color: var(--accent2); }
 
 .page-header h1 {
   margin: 0 0 0.7rem;
@@ -411,6 +413,50 @@ img { display: block; max-width: 100%; }
 }
 
 .page-header p { margin: 0; max-width: 62ch; font-size: 0.85rem; line-height: 1.75; color: var(--ink); }
+
+/* ---------- Contribute ---------- */
+.contribute-content {
+  max-width: 820px;
+}
+
+.contribute-content h2 {
+  margin: 2.8rem 0 0.9rem;
+  padding-top: 1rem;
+  border-top: 3px solid var(--accent2);
+  font-size: clamp(1.8rem, 3.5vw, 2.7rem);
+  line-height: 1;
+  letter-spacing: -0.045em;
+  text-transform: lowercase;
+}
+
+.contribute-content h2:first-child { margin-top: 0; }
+
+.contribute-content p,
+.contribute-content li {
+  color: var(--ink);
+  font-size: 0.9rem;
+  line-height: 1.75;
+}
+
+.contribute-content ul { padding-left: 1.25rem; }
+.contribute-content li::marker { color: var(--accent2); }
+
+.contribute-content a {
+  border-bottom: 2px solid var(--accent2);
+  padding-bottom: 0.08rem;
+  font-weight: 600;
+}
+
+.contribute-content a:hover {
+  color: var(--accent2);
+}
+
+.contribute-content code {
+  padding: 0.05rem 0.32rem;
+  font-family: var(--mono);
+  font-size: 0.88em;
+  background: color-mix(in srgb, var(--accent2) 10%, var(--paper));
+}
 
 /* ---------- Listing / detail cards ---------- */
 .card-grid {

@@ -1,10 +1,11 @@
 ---
-layout: page
+layout: contribute
 title: Contribute
+description: Share a practical faculty AI example or a reusable supporting resource with the exchange.
 permalink: /contribute/
 ---
 
-# Add a gallery example
+## Add a gallery example
 
 To add an account of faculty AI practice to the AI Usage Gallery, create a new Markdown file in `_examples`. Start from `docs/example-template.md`, keep the relevant front matter fields, and write the details in ordinary Markdown below the front matter.
 
@@ -21,7 +22,7 @@ Use the same `department_id` for examples from the same department, even when th
 
 When an example has a source repository, add its URL as `repository_url`. When it has a related skill, add one or more entries to `skill_files` using a local `path` or an external `url`. The gallery card and detail page will show these links automatically; omit either field when it does not apply.
 
-# Add a faculty resource
+## Add a faculty resource
 
 To add a reusable faculty-facing resource, create a new Markdown file in `_resources`. Start from `docs/resource-template.md`, keep the front matter fields, and write the resource in ordinary Markdown below the front matter.
 
