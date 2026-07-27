@@ -5,7 +5,7 @@
   --ink: #1c1a12;
   --accent: #ff8200;     /* tangerine */
   --accent2: #ff1b1c;    /* red — ff1b1c verbatim */
-  --green: #cbe896;      /* lime — resources */
+  --green: #9ed932;      /* lime — resources */
   --muted: color-mix(in srgb, var(--ink) 58%, var(--paper));
   --soft-line: color-mix(in srgb, var(--ink) 20%, var(--paper));
   --sans: 'Archivo', system-ui, -apple-system, sans-serif;
