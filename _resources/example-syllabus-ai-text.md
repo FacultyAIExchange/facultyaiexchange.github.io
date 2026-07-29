@@ -5,6 +5,7 @@ resource_type: Syllabus language
 audience: Faculty writing or revising course syllabi
 context: Classroom AI policy
 format: Adaptable text
+faculty: Jay Foley, Tova Holmes, Will Pfalzgraff, David Strubbe, Christina Vizcarra
 tags:
   - Syllabus
   - Teaching
