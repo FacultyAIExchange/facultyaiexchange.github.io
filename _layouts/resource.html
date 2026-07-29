@@ -13,6 +13,12 @@ layout: default
     </header>
 
     <dl class="metadata-grid">
+      {% if page.faculty %}
+        <div>
+          <dt>Faculty</dt>
+          <dd>{{ page.faculty }}</dd>
+        </div>
+      {% endif %}
       {% if page.audience %}
         <div>
           <dt>Audience</dt>
