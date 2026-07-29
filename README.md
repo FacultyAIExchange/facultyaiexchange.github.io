@@ -2,11 +2,11 @@
 
 A GitHub Pages site for faculty sharing practical experience and reusable resources for incorporating generative AI into teaching, research, mentoring, and academic work ethically and responsibly.
 
-Canonical site URL: <https://facultyaiexchange.github.io/>
+Site URL: <https://facultyaiexchange.github.io/>
 
-## Why Jekyll
+## Structure
 
-This first version uses Jekyll because GitHub Pages can build it directly and contributors only need to add Markdown files. Hugo with Blowfish would also work, but it would require a custom build workflow and a larger theme setup. Jekyll keeps the first shared editing workflow simpler.
+This repo uses Jekyll to build a static webpage from Markdown files. Contributing material to the site only required committing new Markdown files with the text of the project card, and if needed, an associated skill. 
 
 ## Add a gallery example
 
