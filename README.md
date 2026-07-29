@@ -2,7 +2,7 @@
 
 A GitHub Pages site for faculty sharing practical experience and reusable resources for incorporating generative AI into teaching, research, mentoring, and academic work ethically and responsibly.
 
-Site URL: <https://facultyaiexchange.github.io/>
+Site URL: <https://facultyaiexchange.org/>
 
 ## Structure
 
@@ -26,7 +26,7 @@ Each Markdown file in `_examples` appears on the AI Usage Gallery page and becom
 
 Each Markdown file in `_resources` becomes a resource detail page and appears on the resources page.
 
-## Run locally
+## If you'd like to test out a contribution, you can run locally
 
 If you have Ruby 3 and Bundler available:
 
@@ -38,11 +38,3 @@ bundle exec jekyll serve
 GitHub Pages can build the site from `main` whenever changes are pushed.
 
 The Pages workflow runs `scripts/generate_tallies.rb` before each build. It counts gallery examples, resources, and unique `department_id` values into an ephemeral `_data/tallies.yml`, which supplies the three homepage tallies without committing generated data.
-
-## Publish on GitHub Pages
-
-In the repository settings, open **Pages** and choose **Source: GitHub Actions**. The workflow builds and publishes the site whenever changes are pushed to `main`, and it validates pull requests without deploying them.
-
-## Repository
-
-This is an organization GitHub Pages site. The repository is named `facultyaiexchange.github.io`, so GitHub Pages publishes it at the root URL for the `facultyaiexchange` organization.
