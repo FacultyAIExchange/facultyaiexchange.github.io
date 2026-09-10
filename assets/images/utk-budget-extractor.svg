@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 540" role="img" aria-labelledby="ube-title ube-desc">
+  <title id="ube-title">UTK budget extractor</title>
+  <desc id="ube-desc">A cream title card showing a stack of budget spreadsheets on the left feeding, through one arrow, three generated documents on the right: LaTeX macro definitions, a budget justification, and a merged workbook.</desc>
+  <rect width="960" height="540" fill="#f4efe2"/>
+
+  <text x="128" y="72" font-family="'IBM Plex Mono', 'DejaVu Sans Mono', Menlo, monospace" font-size="15" letter-spacing="3.2" fill="#6a6555">PYTHON &#183; OPENPYXL &#183; LATEX</text>
+
+  <text x="128" y="152" font-family="Archivo, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="46" font-weight="700" letter-spacing="-1.8" fill="#1c1a12">Budget spreadsheets in,</text>
+  <text x="128" y="204" font-family="Archivo, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="46" font-weight="700" letter-spacing="-1.8" fill="#1c1a12">proposal documents out</text>
+
+  <rect x="156" y="272" width="150" height="112" fill="#f4efe2" stroke="#1c1a12" stroke-width="2"/><rect x="142" y="286" width="150" height="112" fill="#f4efe2" stroke="#1c1a12" stroke-width="2"/><rect x="128" y="300" width="150" height="112" fill="#f4efe2" stroke="#1c1a12" stroke-width="2"/>
+  <line x1="172" y1="330" x2="250" y2="330" stroke="#b9b3a1" stroke-width="2"/><line x1="172" y1="350" x2="270" y2="350" stroke="#b9b3a1" stroke-width="2"/><line x1="172" y1="370" x2="250" y2="370" stroke="#b9b3a1" stroke-width="2"/><line x1="172" y1="390" x2="270" y2="390" stroke="#b9b3a1" stroke-width="2"/>
+  <text x="128" y="446" font-family="'IBM Plex Mono', 'DejaVu Sans Mono', Menlo, monospace" font-size="15" letter-spacing="1.4" fill="#6a6555">n &#215; budget.xlsx</text>
+
+  <g stroke="#ff8200" stroke-width="2" fill="none">
+    <line x1="330" y1="330" x2="566" y2="330"/>
+    <path d="M 552 322 L 566 330 L 552 338"/>
+  </g>
+  <text x="448" y="316" font-family="'IBM Plex Mono', 'DejaVu Sans Mono', Menlo, monospace" font-size="14" letter-spacing="1.4" fill="#6a6555" text-anchor="middle">extract</text>
+
+  <rect x="606" y="244" width="226" height="66" fill="#f4efe2" stroke="#1c1a12" stroke-width="2"/>
+  <text x="626" y="285" font-family="'IBM Plex Mono', 'DejaVu Sans Mono', Menlo, monospace" font-size="17" letter-spacing="1.4" fill="#1c1a12">defs/*.tex</text><rect x="606" y="332" width="226" height="66" fill="#f4efe2" stroke="#1c1a12" stroke-width="2"/>
+  <text x="626" y="373" font-family="'IBM Plex Mono', 'DejaVu Sans Mono', Menlo, monospace" font-size="17" letter-spacing="1.4" fill="#1c1a12">justification.tex</text><rect x="606" y="420" width="226" height="66" fill="#f4efe2" stroke="#1c1a12" stroke-width="2"/>
+  <text x="626" y="461" font-family="'IBM Plex Mono', 'DejaVu Sans Mono', Menlo, monospace" font-size="17" letter-spacing="1.4" fill="#1c1a12">merged.xlsx</text>
+</svg>
