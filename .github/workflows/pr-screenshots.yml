@@ -1,0 +1,144 @@
+name: PR page screenshots
+
+# On every pull request, build the site, screenshot the pages the PR adds or
+# changes, and post the images in a single auto-updating PR comment so
+# reviewers can see the rendered result without checking out the branch.
+#
+# The images are committed to the dedicated `pr-screenshots` branch (never
+# merged anywhere) so they can be embedded inline in the comment. For PRs from
+# forks the token is read-only, so those runs only upload the screenshots as a
+# workflow artifact instead of commenting.
+
+on:
+  pull_request:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+concurrency:
+  group: pr-screenshots-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+jobs:
+  screenshots:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+
+      - name: Generate homepage tallies
+        run: ruby scripts/generate_tallies.rb
+
+      - name: Build with Jekyll
+        uses: actions/jekyll-build-pages@v1
+        with:
+          source: ./
+          destination: ./_site
+
+      - name: Determine changed pages
+        id: pages
+        run: |
+          bash scripts/pr_changed_pages.sh "origin/${{ github.base_ref }}" | head -12 > changed_pages.txt
+          echo "count=$(wc -l < changed_pages.txt)" >> "$GITHUB_OUTPUT"
+          echo "Pages to screenshot:"
+          cat changed_pages.txt
+
+      - name: Take screenshots
+        if: steps.pages.outputs.count != '0'
+        run: |
+          python3 -m http.server 8080 --directory _site &
+          npx -y playwright@1.55.0 install --with-deps chromium
+          mkdir -p pr-shots
+          while IFS=$'\t' read -r status url slug; do
+            echo "Screenshotting /$url -> $slug.png"
+            npx -y playwright@1.55.0 screenshot \
+              --browser=chromium \
+              --full-page \
+              --viewport-size=1280,900 \
+              --wait-for-timeout=3000 \
+              "http://127.0.0.1:8080/$url" "pr-shots/$slug.png"
+          done < changed_pages.txt
+
+      - name: Upload screenshots as workflow artifact
+        if: steps.pages.outputs.count != '0'
+        uses: actions/upload-artifact@v4
+        with:
+          name: pr-page-screenshots
+          path: pr-shots/
+
+      - name: Publish screenshots to pr-screenshots branch
+        id: publish
+        if: >-
+          steps.pages.outputs.count != '0' &&
+          github.event.pull_request.head.repo.full_name == github.repository
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+        run: |
+          set -euo pipefail
+          workdir=$(mktemp -d)
+          git -C "$workdir" init -q -b pr-screenshots
+          git -C "$workdir" config user.name "github-actions[bot]"
+          git -C "$workdir" config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git -C "$workdir" remote add origin \
+            "https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
+          if git -C "$workdir" fetch -q --depth=1 origin pr-screenshots; then
+            git -C "$workdir" checkout -q -B pr-screenshots FETCH_HEAD
+          fi
+          rm -rf "$workdir/pr-$PR_NUMBER"
+          mkdir -p "$workdir/pr-$PR_NUMBER"
+          cp pr-shots/*.png "$workdir/pr-$PR_NUMBER/"
+          git -C "$workdir" add -A
+          git -C "$workdir" commit -q -m "Screenshots for PR #$PR_NUMBER (run $GITHUB_RUN_ID)"
+          for attempt in 1 2 3; do
+            if git -C "$workdir" push -q origin pr-screenshots; then
+              break
+            fi
+            git -C "$workdir" pull -q --rebase origin pr-screenshots || true
+            sleep 2
+          done
+          echo "sha=$(git -C "$workdir" rev-parse HEAD)" >> "$GITHUB_OUTPUT"
+
+      - name: Post or update PR comment
+        if: steps.publish.outputs.sha
+        uses: actions/github-script@v7
+        env:
+          SCREENSHOTS_SHA: ${{ steps.publish.outputs.sha }}
+        with:
+          script: |
+            const fs = require('fs');
+            const sha = process.env.SCREENSHOTS_SHA;
+            const pr = context.payload.pull_request;
+            const marker = '<!-- pr-page-screenshots -->';
+            const lines = fs.readFileSync('changed_pages.txt', 'utf8').trim().split('\n');
+
+            let body = `${marker}\n## 📸 Page previews\n\n` +
+              `Screenshots of the pages this PR adds or changes, ` +
+              `built from ${pr.head.sha.slice(0, 7)}:\n\n`;
+            for (const line of lines) {
+              const [status, url, slug] = line.split('\t');
+              const label = url === '' ? 'Home page' : `/${url}`;
+              const badge = status === 'A' ? ' 🆕 new page' : '';
+              const img = `https://raw.githubusercontent.com/${context.repo.owner}/` +
+                `${context.repo.repo}/${sha}/pr-${pr.number}/${slug}.png`;
+              body += `<details open><summary><b>${label}</b>${badge}</summary>\n\n` +
+                `![${label}](${img})\n\n</details>\n\n`;
+            }
+            body += '_This comment updates automatically on every push._\n';
+
+            const { data: comments } = await github.rest.issues.listComments({
+              ...context.repo, issue_number: pr.number, per_page: 100,
+            });
+            const existing = comments.find(c => c.body && c.body.includes(marker));
+            if (existing) {
+              await github.rest.issues.updateComment({
+                ...context.repo, comment_id: existing.id, body,
+              });
+            } else {
+              await github.rest.issues.createComment({
+                ...context.repo, issue_number: pr.number, body,
+              });
+            }
