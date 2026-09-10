@@ -1,0 +1,26 @@
+name: Department ID check
+
+# Guard the homepage department tally: every example must carry a
+# lowercase kebab-case department_id, and examples from the same department
+# must reuse the exact same ID. See scripts/check_department_ids.rb for the
+# full list of checks. Problems are surfaced as inline PR annotations.
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v6
+
+      - name: Validate department_id front matter
+        run: ruby scripts/check_department_ids.rb

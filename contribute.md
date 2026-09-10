@@ -18,7 +18,7 @@ Each example should explain:
 
 Related skill files can be stored under `skills/your-skill-name/SKILL.md` and linked from the example's `skill_files` list.
 
-Use a consistent `department_id` for examples from the same department (e.g. utk-physics-and-astronomy). The site build uses this ID to update the department tally automatically.
+Use a consistent `department_id` for examples from the same department (e.g. utk-physics-and-astronomy). The site build uses this ID to update the department tally automatically. A CI check on every pull request flags likely mistakes: a missing ID, an ID that isn't lowercase kebab-case, or two IDs that look like the same department spelled different ways.
 
 When an example has a source repository, add its URL as `repository_url`. When it has a related skill, add one or more entries to `skill_files` using a local `path` or an external `url`. The gallery card and detail page will show these links automatically; omit either field when it does not apply.
 
