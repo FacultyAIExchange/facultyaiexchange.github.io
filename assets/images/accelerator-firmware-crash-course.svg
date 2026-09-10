@@ -8,8 +8,6 @@
   <text x="128" y="168" font-family="Archivo, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="52" font-weight="700" letter-spacing="-2" fill="#1c1a12">A firmware crash course</text>
   <text x="128" y="226" font-family="Archivo, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="52" font-weight="700" letter-spacing="-2" fill="#1c1a12">for software people</text>
 
-  <text x="128" y="276" font-family="Georgia, 'Times New Roman', serif" font-size="21" fill="#6a6555">Circuits happen all at once. Simulation first, no board required.</text>
-
   <!-- timing traces: the one thing hardware makes you think about -->
   <g fill="none" stroke-width="2" stroke-linejoin="miter">
     <path d="M 128 378 L 128 356 L 172 356 L 172 378 L 216 378 L 216 356 L 260 356 L 260 378 L 304 378 L 304 356 L 348 356 L 348 378 L 392 378 L 392 356 L 436 356 L 436 378 L 480 378 L 480 356 L 524 356 L 524 378 L 568 378 L 568 356 L 612 356 L 612 378 L 656 378 L 656 356 L 700 356 L 700 378 L 744 378 L 744 356 L 788 356 L 788 378 L 832 378" stroke="#b9b3a1"/>
