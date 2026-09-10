@@ -23,7 +23,7 @@ repository_url: https://github.com/lawrenceleejr/AcceleratorFirmwareCrashCourse
 
 ## What faculty used it for
 
-Students arriving in accelerator control and particle-physics data acquisition groups are usually competent programmers who have never described hardware. They are handed existing firmware and asked to understand it, change it, and eventually design their own. This course is the on-ramp: thirteen core modules of roughly thirty minutes each, plus a capstone project, built around the one idea that has to land first — VHDL is not a programming language, it is a language for describing hardware, and the circuit you describe runs all at once rather than line by line.
+Students arriving in accelerator control and particle-physics data acquisition groups are usually competent programmers who have never described hardware. They are handed existing FPGA firmware and asked to understand it, change it, and eventually design their own. This is a crash course originally made for a postdoc who needed to quickly come up to speed on a wide array of FPGA topics, with a very specific aim to understand the specific use cases in particle, nuclear, and accelerator physics.
 
 The modules start with entities, signals, combinational logic, and clocks, then work through state machines, memory and FIFOs, clock domain crossing, serial links, and debugging. After the first few modules the ordering is flexible, so a student with a specific firmware block to understand can jump to what they need.
 

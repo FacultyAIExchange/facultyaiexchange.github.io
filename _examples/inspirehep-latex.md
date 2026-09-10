@@ -1,6 +1,6 @@
 ---
 title: InspireHEP × LaTeX — Live Citation Data in Your Documents
-summary: A LaTeX package that pulls references, citation counts, and author metrics straight from INSPIRE-HEP, so a CV or proposal is never stale and never hand-typed.
+summary: A LaTeX package that pulls High Energy Physics references, citation counts, and author metrics straight from INSPIRE-HEP, so a CV or proposal is never stale and never hand-typed.
 faculty: Prof. Lawrence Lee
 department: Physics & Astronomy, University of Tennessee, Knoxville
 department_id: utk-physics-and-astronomy
@@ -32,7 +32,7 @@ The package is on CTAN. It works by fetching data on a first compilation with `-
 
 ## Why it was useful
 
-The tedious part of maintaining a publication record is not the writing, it is the bookkeeping — and bookkeeping is exactly where hand-maintained numbers drift out of date and disagree with each other across documents. Pointing at a canonical record instead of transcribing from it means a CV, a progress report, and a proposal biosketch all quote the same figures, and all of them are current as of the last compile.
+The tedious part of maintaining a publication record is the bookkeeping — and bookkeeping is exactly where hand-maintained numbers drift out of date and disagree with each other across documents. Pointing at a canonical record instead of transcribing from it means a CV, a progress report, and a proposal biosketch all quote the same figures, and all of them are current as of the last compile.
 
 Statistics can also be aggregated across an arbitrary collection of papers, which is useful for describing a subset of one's work — a thesis topic, a single collaboration, a body of work under one award — as a coherent set rather than a list.
 
@@ -42,5 +42,4 @@ The package was written with substantial help from Claude, with the LaTeX interf
 
 - The [inspirehep-latex repository](https://github.com/lawrenceleejr/inspirehep-latex), or a `tlmgr` install from CTAN.
 - A LaTeX toolchain that permits `-shell-escape`, plus Python 3 (standard library only) for the helper script.
-- INSPIRE record IDs or texkeys for the papers you cite, and your INSPIRE author ID for the metrics macros.
 - Anyone outside high-energy physics would need to retarget the fetching layer at their own bibliographic database; the caching and two-pass structure is the reusable part.
