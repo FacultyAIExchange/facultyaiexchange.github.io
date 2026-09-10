@@ -8,6 +8,10 @@
 #   - a missing or empty department_id (the Pages build would fail later,
 #     with a less helpful message)
 #   - an ID that isn't lowercase kebab-case (utk_physics, "UTK Physics", ...)
+#   - an ID that doesn't encode BOTH a university and a department
+#     (physics-and-astronomy, utk): too few parts, every part a generic
+#     discipline word, or the ID matching only the department-name or only
+#     the institution portion of the department field
 #   - two spellings of the same department splitting the tally:
 #       * the same department name mapped to different IDs
 #       * IDs that differ only by an added prefix/suffix token
@@ -18,11 +22,36 @@
 # Output uses GitHub workflow commands so problems show up inline on PRs.
 
 require "pathname"
+require "set"
 require "yaml"
 
 ROOT = Pathname.new(__dir__).join("..").expand_path
 FRONT_MATTER = /\A---\s*\n(.*?)\n---\s*(?:\n|\z)/m
 ID_FORMAT = /\A[a-z0-9]+(?:-[a-z0-9]+)*\z/
+
+# Words that name disciplines, academic units, or connectors rather than a
+# specific university. An ID made up entirely of these (physics-and-astronomy,
+# computer-science) almost certainly forgot the university part. Includes the
+# placeholder words from docs/example-template.md so an unedited copy fails
+# with a helpful message.
+GENERIC_ID_WORDS = %w[
+  a an and communications for in of or the to your
+  department dept division faculty program school studies unit
+  center centre college institute laboratory university
+  accounting aerospace agriculture anthropology archaeology architecture art
+  arts astronomy astrophysics atmospheric biochemistry biology biomedical
+  biophysics botany business cellular chemical chemistry civil classics
+  communication computer computing criminology dance data dentistry design
+  ecology economics education electrical engineering english environmental
+  film finance forestry genetics geography geology geosciences government
+  health history humanities industrial informatics information journalism
+  kinesiology languages law library linguistics literature management marine
+  marketing materials math mathematics mechanical media medical medicine
+  microbiology molecular music neuroscience nursing oceanography pharmacy
+  philosophy physics physiology planning policy political politics psychology
+  public religion science sciences social sociology software statistics
+  systems theater theatre theology veterinary work zoology
+].to_set.freeze
 
 $errors = 0
 
@@ -73,6 +102,49 @@ def levenshtein(a, b)
   prev.last
 end
 
+def slugify(text)
+  normalize_department(text).tr(" ", "-")
+end
+
+# Every ID must encode both a university and a department
+# (utk-physics-and-astronomy = utk + physics-and-astronomy). CI can't know
+# every university's abbreviation, so this catches the likely shapes of a
+# half-encoded ID. The department field ("Physics & Astronomy, University of
+# Tennessee, Knoxville") is only consulted for single-ID files, where it
+# describes exactly that ID.
+def check_encodes_university_and_department(path, id, department)
+  tokens = id.split("-")
+  if tokens.length < 2
+    error(path, "department_id \"#{id}\" must encode both a university and a department, " \
+                "e.g. utk-physics-and-astronomy.")
+    return
+  end
+
+  if tokens.all? { |token| GENERIC_ID_WORDS.include?(token) }
+    error(path, "department_id \"#{id}\" doesn't appear to include a university — every part is a " \
+                "generic department word. Prefix your university's abbreviation " \
+                "(e.g. utk-#{id}).")
+    return
+  end
+
+  return if department.nil? || department.empty?
+
+  name_part, _, institution_part = department.partition(",")
+  if slugify(name_part) == id
+    error(path, "department_id \"#{id}\" is just the department name with no university encoded. " \
+                "Prefix your university's abbreviation (e.g. utk-#{id}).")
+    return
+  end
+
+  segments = institution_part.split(",")
+  institution_slugs = (segments + [institution_part]).map { |s| slugify(s) }.reject(&:empty?)
+  if institution_slugs.include?(id)
+    error(path, "department_id \"#{id}\" encodes only the university with no department. " \
+                "Append the department (e.g. #{id}-#{slugify(name_part)}, or a shorter " \
+                "university abbreviation plus the department).")
+  end
+end
+
 # One ID extending the other by whole hyphen-separated tokens
 # (physics-and-astronomy vs utk-physics-and-astronomy) is the classic
 # "same department, inconsistent prefix" split.
@@ -108,7 +180,9 @@ example_files.each do |path|
   end
 
   ids.each do |id|
-    unless ID_FORMAT.match?(id)
+    if ID_FORMAT.match?(id)
+      check_encodes_university_and_department(path, id, ids.length == 1 ? department : nil)
+    else
       error(path, "department_id \"#{id}\" must be lowercase kebab-case: letters, digits, and single " \
                   "hyphens only (e.g. utk-physics-and-astronomy).")
     end
