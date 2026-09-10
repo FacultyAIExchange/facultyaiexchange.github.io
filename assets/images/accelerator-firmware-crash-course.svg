@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 540" role="img" aria-labelledby="afcc-title afcc-desc">
+  <title id="afcc-title">Accelerator firmware crash course</title>
+  <desc id="afcc-desc">A cream title card over three digital timing traces: a clock, an input pulse crossing a threshold, and the registered output that the pulse latches on the following clock edge.</desc>
+  <rect width="960" height="540" fill="#f4efe2"/>
+
+  <text x="128" y="72" font-family="'IBM Plex Mono', 'DejaVu Sans Mono', Menlo, monospace" font-size="15" letter-spacing="3.2" fill="#6a6555">VHDL &#183; FPGA &#183; 13 MODULES</text>
+
+  <text x="128" y="168" font-family="Archivo, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="52" font-weight="700" letter-spacing="-2" fill="#1c1a12">A firmware crash course</text>
+  <text x="128" y="226" font-family="Archivo, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="52" font-weight="700" letter-spacing="-2" fill="#1c1a12">for software people</text>
+
+  <!-- timing traces: the one thing hardware makes you think about -->
+  <g fill="none" stroke-width="2" stroke-linejoin="miter">
+    <path d="M 128 378 L 128 356 L 172 356 L 172 378 L 216 378 L 216 356 L 260 356 L 260 378 L 304 378 L 304 356 L 348 356 L 348 378 L 392 378 L 392 356 L 436 356 L 436 378 L 480 378 L 480 356 L 524 356 L 524 378 L 568 378 L 568 356 L 612 356 L 612 378 L 656 378 L 656 356 L 700 356 L 700 378 L 744 378 L 744 356 L 788 356 L 788 378 L 832 378" stroke="#b9b3a1"/>
+    <path d="M 128 448 L 300 448 L 316 426 L 348 426 L 364 448 L 832 448" stroke="#1c1a12"/>
+    <path d="M 128 518 L 392 518 L 392 496 L 656 496 L 656 518 L 832 518" stroke="#ff8200"/>
+  </g>
+  <g font-family="'IBM Plex Mono', 'DejaVu Sans Mono', Menlo, monospace" font-size="13" letter-spacing="1.6" fill="#6a6555" text-anchor="end">
+    <text x="112" y="383">clk</text>
+    <text x="112" y="453">pulse</text>
+    <text x="112" y="523">q</text>
+  </g>
+</svg>
