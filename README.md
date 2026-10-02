@@ -28,9 +28,9 @@ Each Markdown file in `_resources` becomes a resource detail page and appears on
 
 ## Pull request page previews
 
-Every pull request runs the `PR page screenshots` workflow (`.github/workflows/pr-screenshots.yml`). It builds the site, maps the PR's changed files to the pages they produce (`scripts/pr_changed_pages.sh`), screenshots each one, and posts the images in a single auto-updating PR comment — so reviewers can see the rendered pages without checking out the branch. If only site-wide files change (layouts, includes, styles), it screenshots the homepage as a representative page.
+Every pull request runs the `PR page screenshots` workflow (`.github/workflows/pr-screenshots.yml`). It builds the site, maps the PR's changed files to the pages they produce (`scripts/pr_changed_pages.sh`), screenshots each one, and uploads the images as a workflow artifact named `pr-page-screenshots`. When it finishes, the `PR page screenshots (comment)` workflow (`.github/workflows/pr-screenshots-comment.yml`) downloads that artifact and posts the images in a single auto-updating PR comment — so reviewers can see the rendered pages without checking out the branch. If only site-wide files change (layouts, includes, styles), it screenshots the homepage as a representative page.
 
-The images are committed to the dedicated `pr-screenshots` branch, which exists only to host them and is never merged. Pull requests from forks have a read-only token, so those runs skip the comment and instead upload the screenshots as a downloadable workflow artifact named `pr-page-screenshots`.
+The images are committed to the dedicated `pr-screenshots` branch, which exists only to host them and is never merged. The work is split across two workflows so that pull requests from forks get the comment too: the first runs the PR's own code with a read-only token, and the second runs in this repository (via `workflow_run`) with the write token needed to push images and comment. The second workflow treats the artifact as untrusted input and validates it before use.
 
 ## If you'd like to test out a contribution, you can run locally
 
