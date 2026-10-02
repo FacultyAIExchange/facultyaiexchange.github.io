@@ -19,7 +19,7 @@ Pyodide 314.0.5 ships numpy 2.4.6, pandas 3.0.2, matplotlib 3.10.8, scipy 1.18.0
     python -c "from jupyterlite_pyodide_kernel.constants import PYODIDE_VERSION; print(PYODIDE_VERSION)"
     curl -sS https://cdn.jsdelivr.net/pyodide/v<VERSION>/full/pyodide-lock.json -o pyodide-lock.json
 
-The lock file's `packages` object lists every built-in package with its version. `scripts/audit_notebooks.py` fetches it for the pinned version and classifies imports against it, then asks PyPI whether an unknown package has a pure-Python (`py3-none-any`) wheel.
+The lock file's `packages` object lists every built-in package with its version. `tools/audit_notebooks.py` fetches it for the pinned version and classifies imports against it, then asks PyPI whether an unknown package has a pure-Python (`py3-none-any`) wheel.
 
 Pin the widget packages to a set known to work together. The front-end halves (ipympl's and ipywidgets' Jupyter extensions) come from the *build* environment; the Python halves come from wheels bundled in the site's `pypi/` folder and installed at runtime. Both sides must match.
 

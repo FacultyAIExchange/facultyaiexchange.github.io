@@ -1,6 +1,6 @@
 # Audit checklist: what breaks in a browser Python, and what to do about it
 
-`scripts/audit_notebooks.py` finds the patterns below and prints them with notebook and cell numbers. This file is the judgment layer: why each pattern matters, how severe it is, and the fix to propose. Report format is at the end.
+`tools/audit_notebooks.py` (in the companion repository) finds the patterns below and prints them with notebook and cell numbers. This file is the judgment layer: why each pattern matters, how severe it is, and the fix to propose. Report format is at the end.
 
 ## Packages
 

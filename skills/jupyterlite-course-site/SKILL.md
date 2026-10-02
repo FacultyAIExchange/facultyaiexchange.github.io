@@ -11,9 +11,17 @@ A JupyterLite site is a folder of static files. Students open a web address, see
 
 The instructor is the expert on their course. You are the one who knows what breaks in a browser. Keep that division: propose, explain, and ask; never change what students are taught without a decision from the instructor.
 
+## Where the tooling lives
+
+The scripts and site templates this skill uses are kept with the live example site, so they can be updated without touching this page:
+
+    git clone https://github.com/william-pfalzgraff/jupyterlite-course-demo.git jupyterlite-course-demo
+
+`tools/` holds `audit_notebooks.py`, `adapt_notebooks.py` and `scaffold_site.py`; `templates/` holds the workflow, configuration, pinned requirements, gitignore, robots and smoke-test files the scaffold copies; the rest of the repository is a complete site to compare against. Clone it into your working folder at the start of Phase 2 and run the scripts with the build environment's Python (they need `nbformat`).
+
 ## Non-negotiable rules
 
-1. **Solutions never enter the site.** Everything in the site's content folder is world-readable the moment it is published. Instructor versions, answer keys, and autograder files stay outside the repository. Refuse to copy them in, and add the safety net in `assets/gitignore` to the repository.
+1. **Solutions never enter the site.** Everything in the site's content folder is world-readable the moment it is published. Instructor versions, answer keys, and autograder files stay outside the repository. Refuse to copy them in, and add the safety net in `templates/gitignore` to the repository.
 2. **Nothing outward-facing without an explicit go-ahead.** Creating a repository, pushing, enabling GitHub Pages, and deleting or overwriting anything the instructor made all require the instructor's confirmation for that specific action. Never handle GitHub tokens or passwords; the instructor logs in themselves.
 3. **Pin every version, and prefer the tested set.** JupyterLite, its Python kernel, and the widget packages must be pinned together, and the pinned set is frozen for the semester. Start from the known-good set in `references/compatibility.md`. Check PyPI for newer releases, but adopt them only if the tested set is more than about six months old or lacks something the course needs, and then re-verify in a browser (Phase 3) before relying on them. Newer is not better here; tested is.
 4. **Every finding cites evidence.** An audit finding names the notebook and cell, quotes the line, says why it matters in a browser, and proposes a fix. No finding without a location.
@@ -36,7 +44,7 @@ Record the answers; several later choices depend on them.
 
 ### Phase 2: audit
 
-Run `scripts/audit_notebooks.py` on the folder (add `--interactive` if the course will use the interactive plot backend; `--offline` skips network lookups; `--cache-dir` moves its one cache file, which otherwise lives under `~/.cache`). It scans every notebook and prints, per notebook: imports checked against the pinned Pyodide's package list, with transitive dependencies and the PyPI author for anything not built in (an "unknown" package may be the instructor's own module; compare with what they told you); functions removed from current NumPy and Matplotlib; backend lines, magics sharing a cell with imports, and plotting cells that would draw into a previous figure under the interactive backend; file and network access; remote images with a liveness check; data files not where they are loaded from, files nothing names, and hidden files; environment-specific wording such as JupyterHub or Validate; solution and autograder markers; cells that don't parse.
+Run `tools/audit_notebooks.py` on the folder (add `--interactive` if the course will use the interactive plot backend; `--offline` skips network lookups; `--cache-dir` moves its one cache file, which otherwise lives under `~/.cache`). It scans every notebook and prints, per notebook: imports checked against the pinned Pyodide's package list, with transitive dependencies and the PyPI author for anything not built in (an "unknown" package may be the instructor's own module; compare with what they told you); functions removed from current NumPy and Matplotlib; backend lines, magics sharing a cell with imports, and plotting cells that would draw into a previous figure under the interactive backend; file and network access; remote images with a liveness check; data files not where they are loaded from, files nothing names, and hidden files; environment-specific wording such as JupyterHub or Validate; solution and autograder markers; cells that don't parse.
 
 Then read `references/audit-checklist.md` and judge what the scan found. The script reports; you decide what matters and what to propose. Write the audit as a report for the instructor, in the chat and also saved as a file in your working folder: a summary table, then findings with location, evidence, why it matters in a browser, and the proposed fix. A finding that repeats across notebooks, or spans several (a save/upload workflow, the closing "Validate and Submit" instructions), is stated once in a course-wide section and referenced per notebook. Four grades:
 
@@ -53,8 +61,8 @@ Ask which fixes to apply. Some, like replacing a package, are pedagogical decisi
 
 Build the site on the instructor's computer before anything is published. This is the step that convinces people, and it needs no GitHub account.
 
-1. Create a dedicated Python environment for building (a conda environment or venv), install the pinned build stack from `assets/requirements.txt` after refreshing its versions, and add any front-end packages the plots need (the widget backend and Plotly must be installed in the *build* environment so their browser extensions are picked up).
-2. Scaffold the site folder with `scripts/scaffold_site.py`, which copies the templates in `assets/`, sets the interface and site name from the interview, and downloads the runtime wheels the notebooks need into `pypi/`.
+1. Create a dedicated Python environment for building (a conda environment or venv), install the pinned build stack from `templates/requirements.txt` after checking its versions, and add any front-end packages the plots need (the widget backend and Plotly must be installed in the *build* environment so their browser extensions are picked up).
+2. Scaffold the site folder with `tools/scaffold_site.py`, which copies the files in `templates/`, sets the interface and site name from the interview, and downloads the runtime wheels the notebooks need into `pypi/`.
 3. Copy the notebooks in, adapted or not yet, plus their data files and images. Never the solutions.
 4. Build and serve:
    ```
@@ -68,7 +76,7 @@ Build the site on the instructor's computer before anything is published. This i
 
 ### Phase 4: adapt the notebooks
 
-With the instructor's decisions from the audit, apply the mechanical fixes with `scripts/adapt_notebooks.py`. It writes converted copies to a new folder and a change log, outside that folder so students never see it, listing every edit by notebook and original cell number so the instructor can mirror changes in their masters. `--backend widget|keep|static` sets the plot policy; `--ensure-figure` inserts `plt.figure()` in plotting cells that would otherwise draw into a previous figure under the interactive backend (off by default because it edits cells students read; the log lists every insertion either way). It also handles install cells, magics that share a cell with imports, `!pip`, remote images (downloaded next to the notebooks when the server returns an image, failures reported), captions, data-file placement without duplicates, hidden files (not copied), cleared outputs, and kernel metadata. Anything beyond that, such as a slider callback that must be restructured, a removed function like `np.trapz` renamed, or a package replaced, you edit by hand and add to the log.
+With the instructor's decisions from the audit, apply the mechanical fixes with `tools/adapt_notebooks.py`. It writes converted copies to a new folder and a change log, outside that folder so students never see it, listing every edit by notebook and original cell number so the instructor can mirror changes in their masters. `--backend widget|keep|static` sets the plot policy; `--ensure-figure` inserts `plt.figure()` in plotting cells that would otherwise draw into a previous figure under the interactive backend (off by default because it edits cells students read; the log lists every insertion either way). It also handles install cells, magics that share a cell with imports, `!pip`, remote images (downloaded next to the notebooks when the server returns an image, failures reported), captions, data-file placement without duplicates, hidden files (not copied), cleared outputs, and kernel metadata. Anything beyond that, such as a slider callback that must be restructured, a removed function like `np.trapz` renamed, or a package replaced, you edit by hand and add to the log.
 
 Show the instructor the log. Then rebuild the demo and have them check again.
 
@@ -77,7 +85,7 @@ Show the instructor the log. Then rebuild the demo and have them check again.
 Only when the instructor asks, and only after the local demo passed.
 
 1. The instructor runs `gh auth login` themselves. Confirm with `gh auth status`.
-2. Create the repository (public, since GitHub Pages on private repositories needs a paid plan), add the site folder with the deploy workflow from `assets/deploy.yml`, confirm the `.gitignore` is in place, and check that no instructor file is staged. Show the file list before the first commit.
+2. Create the repository (public, since GitHub Pages on private repositories needs a paid plan), add the site folder with the deploy workflow from `templates/deploy.yml`, confirm the `.gitignore` is in place, and check that no instructor file is staged. Show the file list before the first commit.
 3. Push, enable Pages with GitHub Actions as the source, wait for the workflow, and give the instructor the address to verify in a private window.
 4. Explain the publishing rhythm: pushing to the main branch is publishing; a notebook students have already opened will not update in their browser, so a fixed notebook goes out under a new filename.
 
@@ -100,5 +108,4 @@ Write two short documents from the templates in `references/guides.md`: an instr
 - `references/compatibility.md`: browser-verified results for plotting and widget libraries, which common chemistry and physics packages are available, how to check the package list for a given Pyodide version, and a known-good pinned set with its test date.
 - `references/site-recipe.md`: the site's files, building, serving, rebuilding, bundling wheels, publishing to GitHub Pages, and verifying.
 - `references/guides.md`: templates for the instructor guide and the student handout.
-- `assets/`: `requirements.txt`, `jupyter-lite.json`, `deploy.yml`, `gitignore`, `robots.txt`, `smoke_test.ipynb`.
-- `scripts/audit_notebooks.py`, `scripts/adapt_notebooks.py`, `scripts/scaffold_site.py`.
+- In the companion repository (https://github.com/william-pfalzgraff/jupyterlite-course-demo): `tools/audit_notebooks.py`, `tools/adapt_notebooks.py`, `tools/scaffold_site.py`, and `templates/` with `requirements.txt`, `jupyter-lite.json`, `deploy.yml`, `gitignore`, `robots.txt`, `smoke_test.ipynb`.

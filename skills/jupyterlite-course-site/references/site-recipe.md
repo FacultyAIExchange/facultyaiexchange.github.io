@@ -13,7 +13,7 @@
       README.md                the instructor guide (Phase 6)
       tests/                   local-only notebooks (smoke test); gitignored, never published
 
-`scripts/scaffold_site.py` creates this from the templates in `assets/`.
+`tools/scaffold_site.py` in the companion repository (https://github.com/william-pfalzgraff/jupyterlite-course-demo) creates this from its `templates/` folder.
 
 ## The build environment
 
@@ -90,7 +90,7 @@ Only after the local demo passed, and only with the instructor's go-ahead at eac
 4. Enable Pages from Actions: `gh api -X POST repos/<owner>/<name>/pages -f build_type=workflow`, then `gh run watch` for the first build. If the API call fails, the instructor can set Settings > Pages > Source to "GitHub Actions" in the browser.
 5. The site address is `https://<owner>.github.io/<name>/`. The instructor verifies in a private window.
 
-The deploy workflow (`assets/deploy.yml`) installs `requirements.txt`, builds with `--contents content`, copies `robots.txt`, and publishes. Every push to the main branch republishes within a couple of minutes.
+The deploy workflow (`templates/deploy.yml`) installs `requirements.txt`, builds with `--contents content`, copies `robots.txt`, and publishes. Every push to the main branch republishes within a couple of minutes.
 
 ## Clear outputs before committing
 
