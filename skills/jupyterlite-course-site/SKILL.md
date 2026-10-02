@@ -11,13 +11,20 @@ A JupyterLite site is a folder of static files. Students open a web address, see
 
 The instructor is the expert on their course. You are the one who knows what breaks in a browser. Keep that division: propose, explain, and ask; never change what students are taught without a decision from the instructor.
 
-## Where the tooling lives
+## First step, before anything else: clone the companion repository
 
-The scripts and site templates this skill uses are kept with the live example site, so they can be updated without touching this page:
+Everything this skill relies on beyond this file lives with the live example site, so it can be kept current without changes to this page:
 
     git clone https://github.com/william-pfalzgraff/jupyterlite-course-demo.git jupyterlite-course-demo
 
-`tools/` holds `audit_notebooks.py`, `adapt_notebooks.py` and `scaffold_site.py`; `templates/` holds the workflow, configuration, pinned requirements, gitignore, robots and smoke-test files the scaffold copies; the rest of the repository is a complete site to compare against. Clone it into your working folder at the start of Phase 2 and run the scripts with the build environment's Python (they need `nbformat`).
+Do this at the start, in your working folder. Inside the clone:
+
+- `references/`: `audit-checklist.md`, `compatibility.md`, `site-recipe.md`, `guides.md`. Read the first two before the interview; they are referred to throughout.
+- `tools/`: `audit_notebooks.py`, `adapt_notebooks.py`, `scaffold_site.py`. Run them with the build environment's Python (they need `nbformat`).
+- `templates/`: the workflow, configuration, pinned requirements, gitignore, robots and smoke-test files the scaffold copies.
+- The rest of the repository is a complete, published site to compare against: https://william-pfalzgraff.github.io/jupyterlite-course-demo/
+
+Every `references/`, `tools/` and `templates/` path below means the one inside that clone.
 
 ## Non-negotiable rules
 
@@ -102,10 +109,6 @@ Write two short documents from the templates in `references/guides.md`: an instr
 - A pinned, reproducible build they can repeat next semester.
 - The two documents from Phase 6.
 
-## Files in this skill
+## Files
 
-- `references/audit-checklist.md`: what to look for, why each thing matters in a browser, and the fix. Read before writing an audit.
-- `references/compatibility.md`: browser-verified results for plotting and widget libraries, which common chemistry and physics packages are available, how to check the package list for a given Pyodide version, and a known-good pinned set with its test date.
-- `references/site-recipe.md`: the site's files, building, serving, rebuilding, bundling wheels, publishing to GitHub Pages, and verifying.
-- `references/guides.md`: templates for the instructor guide and the student handout.
-- In the companion repository (https://github.com/william-pfalzgraff/jupyterlite-course-demo): `tools/audit_notebooks.py`, `tools/adapt_notebooks.py`, `tools/scaffold_site.py`, and `templates/` with `requirements.txt`, `jupyter-lite.json`, `deploy.yml`, `gitignore`, `robots.txt`, `smoke_test.ipynb`.
+This file is the whole of the skill on the exchange. The reference notes, scripts and templates are in the companion repository (https://github.com/william-pfalzgraff/jupyterlite-course-demo), laid out as described at the top; the skill's text refers to them by their paths there.
